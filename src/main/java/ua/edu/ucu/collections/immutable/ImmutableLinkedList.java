@@ -89,9 +89,6 @@ public final class ImmutableLinkedList implements ImmutableList {
         int idx = 0;
 
         while (idx != index) {
-            if (current == null) {
-                return null;
-            }
             current = current.getNext();
             idx += 1;
         }
