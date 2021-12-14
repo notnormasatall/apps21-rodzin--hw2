@@ -41,9 +41,19 @@ public class ImmutableLinkedListTest {
         linkedList.indexOf(10);
     }
 
+    @Test (expected = InputMismatchException.class)
+    public void idxErrorsZero() {
+        linkedList.indexOf(-1);
+    }
+
     @Test (expected = IndexOutOfBoundsException.class)
     public void setErrors() {
         linkedList.set(10, 15);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void setErrorsZero() {
+        linkedList.set(-1, 15);
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
@@ -52,10 +62,19 @@ public class ImmutableLinkedListTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
+    public void removeErrorsZero() {
+        linkedList.remove(-1);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
     public void getErrors() {
         linkedList.get(15);
     }
 
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void getErrorsZero() {
+        linkedList.get(-1);
+    }
 
     @Test
     public void toSet() {
@@ -113,6 +132,18 @@ public class ImmutableLinkedListTest {
         assertEquals(5, linkedList.getLast());
         assertEquals(1, linkedList.getHead().getValue());
         assertEquals(5, linkedList.getTail().getValue());
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void firstErr() {
+        ImmutableLinkedList lst = new ImmutableLinkedList();
+        lst.getFirst();
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void lastErr() {
+        ImmutableLinkedList lst = new ImmutableLinkedList();
+        lst.getLast();
     }
 
     @Test

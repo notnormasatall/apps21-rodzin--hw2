@@ -37,7 +37,7 @@
    <duplication lines="8" tokens="34">
       <file line="74"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
-      <file line="108"
+      <file line="105"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
       <codefragment><![CDATA[        Object[] removed = Arrays.copyOf(this.toArray(), this.length - 1);
         int j = 0;
@@ -76,7 +76,7 @@
    <duplication lines="13" tokens="30">
       <file line="106"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
-      <file line="143"
+      <file line="140"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
       <codefragment><![CDATA[        }
 

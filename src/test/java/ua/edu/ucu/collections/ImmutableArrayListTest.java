@@ -40,14 +40,19 @@ public class ImmutableArrayListTest {
         arrList.indexOf(10);
     }
 
+    @Test (expected = InputMismatchException.class)
+    public void idxErrorsZero() {
+        arrList.indexOf(-1);
+    }
+
     @Test (expected = IndexOutOfBoundsException.class)
     public void setErrors() {
         arrList.set(10, 15);
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
-    public void addErrors() {
-        arrList.addAll(15, new Object[]{2});
+    public void setErrorsZero() {
+        arrList.set(-1, 15);
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
@@ -56,8 +61,18 @@ public class ImmutableArrayListTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
+    public void removeErrorsZero() {
+        arrList.remove(-1);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
     public void getErrors() {
         arrList.get(15);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void getErrorsZero() {
+        arrList.get(-1);
     }
 
 

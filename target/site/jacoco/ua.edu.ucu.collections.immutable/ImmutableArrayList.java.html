@@ -57,7 +57,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public Object get(int index) {
-<span class="pc bpc" id="L60" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
 <span class="fc" id="L61">            throw new IndexOutOfBoundsException();</span>
         }
 <span class="fc" id="L63">        Object[] arr = this.toArray();</span>
@@ -66,7 +66,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList remove(int index) {
-<span class="pc bpc" id="L69" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc bfc" id="L69" title="All 4 branches covered.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
 <span class="fc" id="L70">            throw new IndexOutOfBoundsException();</span>
         }
 
@@ -86,7 +86,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList set(int index, Object e) {
-<span class="pc bpc" id="L89" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc bfc" id="L89" title="All 4 branches covered.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
 <span class="fc" id="L90">            throw new IndexOutOfBoundsException();</span>
         }
 
