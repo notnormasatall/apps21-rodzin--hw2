@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="uk"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ImmutableLinkedList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ImmutableCollections</a> &gt; <a href="index.source.html" class="el_package">ua.edu.ucu.collections.immutable</a> &gt; <span class="el_source">ImmutableLinkedList.java</span></div><h1>ImmutableLinkedList.java</h1><pre class="source lang-java linenums">package ua.edu.ucu.collections.immutable;
+
+import java.util.Arrays;
+import java.util.InputMismatchException;
+
+public final class ImmutableLinkedList implements ImmutableList {
+    private Node head;
+    private Node tail;
+    private final int length;
+
+<span class="fc" id="L11">    public ImmutableLinkedList(Object[] elements) {</span>
+<span class="fc" id="L12">        this.head = null;</span>
+<span class="fc" id="L13">        this.tail = null;</span>
+<span class="fc" id="L14">        this.length = elements.length;</span>
+
+<span class="fc" id="L16">        Node current = null;</span>
+
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (int i = 0; i &lt; elements.length; i++) {</span>
+<span class="fc" id="L19">            Node newNode = new Node();</span>
+<span class="fc" id="L20">            newNode.setValue(elements[i]);</span>
+
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            if (current != null) {</span>
+<span class="fc" id="L23">                current.setNext(newNode);</span>
+            }
+<span class="fc" id="L25">            newNode.setPrevious(current);</span>
+<span class="fc" id="L26">            current = newNode;</span>
+
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (i == 0) {</span>
+<span class="fc" id="L29">                this.head = newNode;</span>
+            }
+
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if (i == elements.length - 1) {</span>
+<span class="fc" id="L33">                this.tail = newNode;</span>
+            }
+        }
+<span class="fc" id="L36">    }</span>
+
+<span class="fc" id="L38">    public ImmutableLinkedList() {</span>
+<span class="fc" id="L39">        this.length = 0;</span>
+<span class="fc" id="L40">        this.head = null;</span>
+<span class="fc" id="L41">        this.tail = null;</span>
+<span class="fc" id="L42">    }</span>
+
+    @Override
+    public ImmutableList add(Object e) {
+<span class="fc" id="L46">        Object[] toAdd = new Object[]{e};</span>
+<span class="fc" id="L47">        return this.addAll(toAdd);</span>
+    }
+
+    @Override
+    public ImmutableList add(int index, Object e) {
+<span class="fc" id="L52">        Object[] toAdd = new Object[]{e};</span>
+<span class="fc" id="L53">        return this.addAll(index, toAdd);</span>
+    }
+
+    @Override
+    public ImmutableList addAll(Object[] c) {
+<span class="fc" id="L58">        return this.addAll(this.length, c);</span>
+    }
+
+    @Override
+    public ImmutableList addAll(int index, Object[] c) {
+<span class="pc bpc" id="L63" title="2 of 4 branches missed.">        if (index &gt; this.length || index &lt; 0) {</span>
+<span class="nc" id="L64">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L67">        Object[] oldArr = Arrays.copyOf(this.toArray(), this.length);</span>
+<span class="fc" id="L68">        Object[] extended = new Object[this.length + c.length];</span>
+
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for (int i = 0; i &lt; extended.length; i++) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            if (i &lt; index) {</span>
+<span class="fc" id="L72">                extended[i] = oldArr[i];</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            } else if (i &lt; index + c.length) {</span>
+<span class="fc" id="L74">                extended[i] = c[i - index];</span>
+            } else {
+<span class="fc" id="L76">                extended[i] = oldArr[i - c.length];</span>
+            }
+        }
+<span class="fc" id="L79">        return new ImmutableLinkedList(extended);</span>
+    }
+
+    @Override
+    public Object get(int index) {
+<span class="pc bpc" id="L84" title="1 of 4 branches missed.">        if (index &gt; this.length || index &lt; 0) {</span>
+<span class="fc" id="L85">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L88">        Node current = this.head;</span>
+<span class="fc" id="L89">        int idx = 0;</span>
+
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        while (idx != index) {</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">            if (current == null) {</span>
+<span class="nc" id="L93">                break;</span>
+            }
+<span class="fc" id="L95">            current = current.getNext();</span>
+<span class="fc" id="L96">            idx += 1;</span>
+        }
+<span class="fc" id="L98">        return current.getValue();</span>
+    }
+
+    @Override
+    public ImmutableList remove(int index) {
+<span class="pc bpc" id="L103" title="1 of 4 branches missed.">        if (index &gt; this.length || index &lt; 0) {</span>
+<span class="fc" id="L104">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L107">        Object[] removed = new Object[this.length - 1];</span>
+<span class="fc" id="L108">        Object[] arr = Arrays.copyOf(this.toArray(), this.length);</span>
+
+<span class="fc" id="L110">        int j = 0;</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">        for (int i = 0; i &lt; this.length; i++) {</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            if (i == index) {</span>
+<span class="fc" id="L113">                continue;</span>
+            }
+<span class="fc" id="L115">            removed[j] = arr[i];</span>
+<span class="fc" id="L116">            j += 1;</span>
+        }
+<span class="fc" id="L118">        return new ImmutableLinkedList(removed);</span>
+    }
+
+    @Override
+    public ImmutableList set(int index, Object e) {
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">        if (index &gt; this.length || index &lt; 0) {</span>
+<span class="fc" id="L124">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L127">        Object[] changed = Arrays.copyOf(this.toArray(), this.length);</span>
+<span class="fc" id="L128">        changed[index] = e;</span>
+<span class="fc" id="L129">        return new ImmutableLinkedList(changed);</span>
+    }
+
+    @Override
+    public int indexOf(Object e) {
+<span class="fc" id="L134">        int idx = 0;</span>
+<span class="fc" id="L135">        Node current = this.head;</span>
+
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        while (current != null) {</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            if (current.getValue() == e) {</span>
+<span class="fc" id="L139">                return idx;</span>
+            }
+<span class="fc" id="L141">            current = current.getNext();</span>
+<span class="fc" id="L142">            idx += 1;</span>
+        }
+
+<span class="fc" id="L145">        throw new InputMismatchException();</span>
+    }
+
+    @Override
+    public int size() {
+<span class="fc" id="L150">        return this.length;</span>
+    }
+
+    @Override
+    public ImmutableList clear() {
+<span class="fc" id="L155">        return new ImmutableLinkedList();</span>
+    }
+
+    @Override
+    public boolean isEmpty() {
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">        return this.length == 0;</span>
+    }
+
+    @Override
+    public Object[] toArray() {
+<span class="fc" id="L165">        Object[] arr = new Object[this.length];</span>
+<span class="fc" id="L166">        Node current = this.head;</span>
+<span class="fc" id="L167">        int idx = 0;</span>
+
+<span class="fc bfc" id="L169" title="All 2 branches covered.">        while (current != null) {</span>
+<span class="fc" id="L170">            arr[idx] = current.getValue();</span>
+<span class="fc" id="L171">            current = current.getNext();</span>
+<span class="fc" id="L172">            idx += 1;</span>
+        }
+<span class="fc" id="L174">        return arr;</span>
+    }
+
+    public ImmutableLinkedList addFirst(Object e) {
+<span class="fc" id="L178">        return (ImmutableLinkedList) this.addAll(0, new Object[]{e});</span>
+    }
+
+    public ImmutableLinkedList addLast(Object e) {
+<span class="fc" id="L182">        return (ImmutableLinkedList) this.addAll(this.length, new Object[]{e});</span>
+    }
+
+    public Node getHead() {
+<span class="fc" id="L186">        return this.head;</span>
+    }
+
+    public Node getTail() {
+<span class="fc" id="L190">        return this.tail;</span>
+    }
+
+    public Object getFirst() {
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if (this.isEmpty()) {</span>
+<span class="nc" id="L195">            throw new IndexOutOfBoundsException();</span>
+        }
+<span class="fc" id="L197">        return head.getValue();</span>
+    }
+
+    public Object getLast() {
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">        if (this.isEmpty()) {</span>
+<span class="nc" id="L202">            throw new IndexOutOfBoundsException();</span>
+        }
+<span class="fc" id="L204">        return tail.getValue();</span>
+    }
+
+    public ImmutableLinkedList removeFirst() {
+<span class="fc" id="L208">        return (ImmutableLinkedList) this.remove(0);</span>
+    }
+
+    public ImmutableLinkedList removeLast() {
+<span class="fc" id="L212">        return (ImmutableLinkedList) this.remove(this.length - 1);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

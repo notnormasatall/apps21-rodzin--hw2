@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="uk"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ImmutableArrayList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ImmutableCollections</a> &gt; <a href="index.source.html" class="el_package">ua.edu.ucu.collections.immutable</a> &gt; <span class="el_source">ImmutableArrayList.java</span></div><h1>ImmutableArrayList.java</h1><pre class="source lang-java linenums">package ua.edu.ucu.collections.immutable;
+
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Objects;
+
+public final class ImmutableArrayList implements ImmutableList {
+    private final Object[] elems;
+    private final int length;
+
+<span class="fc" id="L11">    public ImmutableArrayList(Object[] elements) {</span>
+<span class="fc" id="L12">        this.elems = elements;</span>
+<span class="fc" id="L13">        this.length = elements.length;</span>
+<span class="fc" id="L14">    }</span>
+
+<span class="fc" id="L16">    public ImmutableArrayList() {</span>
+<span class="fc" id="L17">        this.elems = new Object[]{};</span>
+<span class="fc" id="L18">        this.length = 0;</span>
+<span class="fc" id="L19">    }</span>
+
+    @Override
+    public ImmutableList add(Object e) {
+<span class="fc" id="L23">        return this.addAll(new Object[]{e});</span>
+    }
+
+    @Override
+    public ImmutableList add(int index, Object e) {
+<span class="fc" id="L28">        return this.addAll(index, new Object[]{e});</span>
+    }
+
+    @Override
+    public ImmutableList addAll(Object[] c) {
+<span class="fc" id="L33">        return this.addAll(this.length, c);</span>
+    }
+
+    @Override
+    public ImmutableList addAll(int index, Object[] c) {
+
+<span class="fc" id="L39">        Object[] oldArr = this.toArray();</span>
+<span class="fc" id="L40">        Object[] extended = new Object[this.length + c.length];</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (int i = 0; i &lt; extended.length; i++) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (i &lt; index) {</span>
+<span class="fc" id="L44">                extended[i] = oldArr[i];</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            } else if (i &lt; index + c.length) {</span>
+<span class="fc" id="L46">                extended[i] = c[i - index];</span>
+            } else {
+<span class="fc" id="L48">                extended[i] = oldArr[i - c.length];</span>
+            }
+        }
+
+<span class="fc" id="L52">        return new ImmutableArrayList(extended);</span>
+    }
+
+    @Override
+    public Object get(int index) {
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc" id="L58">            throw new IndexOutOfBoundsException();</span>
+        }
+<span class="fc" id="L60">        Object[] arr = this.toArray();</span>
+<span class="fc" id="L61">        return arr[index];</span>
+    }
+
+    @Override
+    public ImmutableList remove(int index) {
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc" id="L67">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L70">        Object[] oldArr = this.toArray();</span>
+<span class="fc" id="L71">        Object[] removed = Arrays.copyOf(this.toArray(), this.length - 1);</span>
+<span class="fc" id="L72">        int j = 0;</span>
+
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (int i = 0; i &lt; this.length; i++) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">            if (i == index) {</span>
+<span class="fc" id="L76">                continue;</span>
+            }
+<span class="fc" id="L78">            removed[j] = oldArr[i];</span>
+<span class="fc" id="L79">            j += 1;</span>
+        }
+<span class="fc" id="L81">        return new ImmutableArrayList(removed);</span>
+    }
+
+    @Override
+    public ImmutableList set(int index, Object e) {
+<span class="pc bpc" id="L86" title="1 of 4 branches missed.">        if (index &gt; this.length - 1 || index &lt; 0) {</span>
+<span class="fc" id="L87">            throw new IndexOutOfBoundsException();</span>
+        }
+
+<span class="fc" id="L90">        Object[] arr = this.toArray();</span>
+<span class="fc" id="L91">        arr[index] = e;</span>
+<span class="fc" id="L92">        return new ImmutableArrayList(arr);</span>
+    }
+
+    @Override
+    public int indexOf(Object e) {
+<span class="fc" id="L97">        Object[] arr = this.toArray();</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        for (int i = 0; i &lt; this.length; i++) {</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">            if (arr[i] == e) {</span>
+<span class="fc" id="L101">                return i;</span>
+            }
+        }
+
+<span class="fc" id="L105">        throw new InputMismatchException();</span>
+    }
+
+    @Override
+    public int size() {
+<span class="fc" id="L110">        return this.length;</span>
+    }
+
+    @Override
+    public ImmutableList clear() {
+<span class="fc" id="L115">        return new ImmutableArrayList();</span>
+    }
+
+    @Override
+    public boolean isEmpty() {
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        return this.length == 0;</span>
+    }
+
+    @Override
+    public Object[] toArray() {
+<span class="fc" id="L125">        return Arrays.copyOf(this.elems, this.length);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

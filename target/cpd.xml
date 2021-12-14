@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+   <duplication lines="14" tokens="92">
+      <file line="39"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="67"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[        Object[] oldArr = this.toArray();
+        Object[] extended = new Object[this.length + c.length];
+
+        for (int i = 0; i < extended.length; i++) {
+            if (i < index) {
+                extended[i] = oldArr[i];
+            } else if (i < index + c.length) {
+                extended[i] = c[i - index];
+            } else {
+                extended[i] = oldArr[i - c.length];
+            }
+        }
+
+        return new ImmutableArrayList(extended);]]></codefragment>
+   </duplication>
+   <duplication lines="10" tokens="41">
+      <file line="28"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="53"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[        return this.addAll(index, new Object[]{e});
+    }
+
+    @Override
+    public ImmutableList addAll(Object[] c) {
+        return this.addAll(this.length, c);
+    }
+
+    @Override
+    public ImmutableList addAll(int index, Object[] c) {]]></codefragment>
+   </duplication>
+   <duplication lines="8" tokens="34">
+      <file line="71"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="108"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[        Object[] removed = Arrays.copyOf(this.toArray(), this.length - 1);
+        int j = 0;
+
+        for (int i = 0; i < this.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            removed[j] = oldArr[i];]]></codefragment>
+   </duplication>
+   <duplication lines="5" tokens="33">
+      <file line="56"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="85"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <codefragment><![CDATA[    public Object get(int index) {
+        if (index > this.length - 1 || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        Object[] arr = this.toArray();]]></codefragment>
+   </duplication>
+   <duplication lines="13" tokens="30">
+      <file line="103"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="143"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[        }
+
+        throw new InputMismatchException();
+    }
+
+    @Override
+    public int size() {
+        return this.length;
+    }
+
+    @Override
+    public ImmutableList clear() {
+        return new ImmutableArrayList();]]></codefragment>
+   </duplication>
+</pmd-cpd>

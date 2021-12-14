@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java">
+<error line="5" column="8" severity="error" message="Unused import - java.util.Objects." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java">
+</file>
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableList.java">
+</file>
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\Node.java">
+</file>
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\Queue.java">
+</file>
+<file name="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\Stack.java">
+</file>
+</checkstyle>
