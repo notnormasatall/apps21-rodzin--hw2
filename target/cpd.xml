@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
-   <duplication lines="14" tokens="92">
-      <file line="39"
-            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
-      <file line="67"
-            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
-      <codefragment><![CDATA[        Object[] oldArr = this.toArray();
-        Object[] extended = new Object[this.length + c.length];
-
-        for (int i = 0; i < extended.length; i++) {
-            if (i < index) {
-                extended[i] = oldArr[i];
-            } else if (i < index + c.length) {
-                extended[i] = c[i - index];
-            } else {
-                extended[i] = oldArr[i - c.length];
-            }
-        }
-
-        return new ImmutableArrayList(extended);]]></codefragment>
-   </duplication>
-   <duplication lines="10" tokens="41">
+   <duplication lines="15" tokens="65">
       <file line="28"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
       <file line="53"
@@ -34,10 +14,28 @@
     }
 
     @Override
-    public ImmutableList addAll(int index, Object[] c) {]]></codefragment>
+    public ImmutableList addAll(int index, Object[] c) {
+        if (index > this.length || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] oldArr = this.toArray();]]></codefragment>
+   </duplication>
+   <duplication lines="7" tokens="52">
+      <file line="42"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="67"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[        Object[] oldArr = this.toArray();
+        Object[] extended = new Object[this.length + c.length];
+
+        for (int i = 0; i < extended.length; i++) {
+            if (i < index) {
+                extended[i] = oldArr[i];
+            } else if (index + c.length > i) {]]></codefragment>
    </duplication>
    <duplication lines="8" tokens="34">
-      <file line="71"
+      <file line="74"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
       <file line="108"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
@@ -50,10 +48,24 @@
             }
             removed[j] = oldArr[i];]]></codefragment>
    </duplication>
-   <duplication lines="5" tokens="33">
-      <file line="56"
+   <duplication lines="8" tokens="33">
+      <file line="48"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
-      <file line="85"
+      <file line="73"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>
+      <codefragment><![CDATA[            } else if (index + c.length > i) {
+                extended[i] = c[i - index];
+            } else {
+                extended[i] = oldArr[i - c.length];
+            }
+        }
+
+        return new ImmutableArrayList(extended);]]></codefragment>
+   </duplication>
+   <duplication lines="5" tokens="33">
+      <file line="59"
+            path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
+      <file line="88"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
       <codefragment><![CDATA[    public Object get(int index) {
         if (index > this.length - 1 || index < 0) {
@@ -62,7 +74,7 @@
         Object[] arr = this.toArray();]]></codefragment>
    </duplication>
    <duplication lines="13" tokens="30">
-      <file line="103"
+      <file line="106"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableArrayList.java"/>
       <file line="143"
             path="D:\Studium\year_two\semester-one\oop\homeworks\homework2\ImmutableCollections\src\main\java\ua\edu\ucu\collections\immutable\ImmutableLinkedList.java"/>

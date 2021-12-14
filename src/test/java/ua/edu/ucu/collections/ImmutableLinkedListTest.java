@@ -12,14 +12,12 @@ import static org.junit.Assert.assertEquals;
 
 public class ImmutableLinkedListTest {
     ImmutableLinkedList linkedList;
-    ImmutableArrayList arrList;
     Object[] array;
 
     @Before
     public void setUp() {
         array = new Object[]{1,2,3,4,5};
         linkedList = new ImmutableLinkedList(array);
-        arrList = new ImmutableArrayList(array);
     }
 
     @Test
@@ -98,6 +96,11 @@ public class ImmutableLinkedListTest {
 
         assertEquals(6, linkedList.addAll(2, adder).get(2));
         assertEquals(7, linkedList.addAll(2, adder).get(3));
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void addErrors() {
+        linkedList.addAll(15, new Object[]{2});
     }
 
     @Test

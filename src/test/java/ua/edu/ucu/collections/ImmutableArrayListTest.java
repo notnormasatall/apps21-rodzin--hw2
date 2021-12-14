@@ -46,6 +46,11 @@ public class ImmutableArrayListTest {
     }
 
     @Test (expected = IndexOutOfBoundsException.class)
+    public void addErrors() {
+        arrList.addAll(15, new Object[]{2});
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
     public void removeErrors() {
         arrList.remove(15);
     }

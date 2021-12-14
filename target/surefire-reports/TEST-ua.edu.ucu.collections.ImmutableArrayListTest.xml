@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="ua.edu.ucu.collections.ImmutableArrayListTest" time="0.015" errors="0" skipped="0">
+<testsuite tests="15" failures="0" name="ua.edu.ucu.collections.ImmutableArrayListTest" time="0.016" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.2.3"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -60,11 +60,12 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="toRemove" time="0.015"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="toRemove" time="0.016"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="idxErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="removeErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="toClear" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="toAddAllIdx" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="addErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="idx" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="empty" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableArrayListTest" name="toAdd" time="0"/>

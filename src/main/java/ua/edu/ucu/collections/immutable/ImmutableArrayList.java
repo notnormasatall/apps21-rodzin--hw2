@@ -35,6 +35,9 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
+        if (index > this.length || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
 
         Object[] oldArr = this.toArray();
         Object[] extended = new Object[this.length + c.length];

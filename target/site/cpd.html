@@ -58,32 +58,6 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
-<td>39</td></tr>
-<tr class="a">
-<td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
-<td>67</td></tr>
-<tr class="b"><td colspan='2'>
-<div>
-<pre>        Object[] oldArr = this.toArray();
-        Object[] extended = new Object[this.length + c.length];
-
-        for (int i = 0; i &lt; extended.length; i++) {
-            if (i &lt; index) {
-                extended[i] = oldArr[i];
-            } else if (i &lt; index + c.length) {
-                extended[i] = c[i - index];
-            } else {
-                extended[i] = oldArr[i - c.length];
-            }
-        }
-
-        return new ImmutableArrayList(extended);</pre></div></td></tr></table>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>File</th>
-<th>Line</th></tr>
-<tr class="b">
-<td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
 <td>28</td></tr>
 <tr class="a">
 <td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
@@ -99,14 +73,38 @@
     }
 
     @Override
-    public ImmutableList addAll(int index, Object[] c) {</pre></div></td></tr></table>
+    public ImmutableList addAll(int index, Object[] c) {
+        if (index &gt; this.length || index &lt; 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Object[] oldArr = this.toArray();</pre></div></td></tr></table>
 <table border="0" class="bodyTable">
 <tr class="a">
 <th>File</th>
 <th>Line</th></tr>
 <tr class="b">
 <td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
-<td>71</td></tr>
+<td>42</td></tr>
+<tr class="a">
+<td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
+<td>67</td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>        Object[] oldArr = this.toArray();
+        Object[] extended = new Object[this.length + c.length];
+
+        for (int i = 0; i &lt; extended.length; i++) {
+            if (i &lt; index) {
+                extended[i] = oldArr[i];
+            } else if (index + c.length &gt; i) {</pre></div></td></tr></table>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
+<td>74</td></tr>
 <tr class="a">
 <td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
 <td>108</td></tr>
@@ -126,10 +124,30 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
-<td>56</td></tr>
+<td>48</td></tr>
+<tr class="a">
+<td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
+<td>73</td></tr>
+<tr class="b"><td colspan='2'>
+<div>
+<pre>            } else if (index + c.length &gt; i) {
+                extended[i] = c[i - index];
+            } else {
+                extended[i] = oldArr[i - c.length];
+            }
+        }
+
+        return new ImmutableArrayList(extended);</pre></div></td></tr></table>
+<table border="0" class="bodyTable">
+<tr class="a">
+<th>File</th>
+<th>Line</th></tr>
+<tr class="b">
+<td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
+<td>59</td></tr>
 <tr class="a">
 <td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
-<td>85</td></tr>
+<td>88</td></tr>
 <tr class="b"><td colspan='2'>
 <div>
 <pre>    public Object get(int index) {
@@ -143,7 +161,7 @@
 <th>Line</th></tr>
 <tr class="b">
 <td>ua\edu\ucu\collections\immutable\ImmutableArrayList.java</td>
-<td>103</td></tr>
+<td>106</td></tr>
 <tr class="a">
 <td>ua\edu\ucu\collections\immutable\ImmutableLinkedList.java</td>
 <td>143</td></tr>
