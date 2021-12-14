@@ -9,7 +9,7 @@ public final class ImmutableArrayList implements ImmutableList {
     private final int length;
 
     public ImmutableArrayList(Object[] elements) {
-        this.elems = elements;
+        this.elems = Arrays.copyOf(elements, elements.length);
         this.length = elements.length;
     }
 
