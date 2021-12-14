@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 ImmutableCollections,ua.edu.ucu.collections.immutable,Node,0,37,0,0,0,15,0,8,0,8
-ImmutableCollections,ua.edu.ucu.collections.immutable,ImmutableLinkedList,0,389,1,47,0,93,1,45,0,22
-ImmutableCollections,ua.edu.ucu.collections.immutable,ImmutableArrayList,2,244,2,30,0,51,2,28,0,14
+ImmutableCollections,ua.edu.ucu.collections.immutable,ImmutableLinkedList,0,389,0,48,0,93,0,46,0,22
+ImmutableCollections,ua.edu.ucu.collections.immutable,ImmutableArrayList,2,244,1,31,0,51,1,29,0,14
 ImmutableCollections,ua.edu.ucu.collections,Stack,0,30,0,0,0,8,0,4,0,4
 ImmutableCollections,ua.edu.ucu.collections,Queue,0,29,0,0,0,8,0,4,0,4

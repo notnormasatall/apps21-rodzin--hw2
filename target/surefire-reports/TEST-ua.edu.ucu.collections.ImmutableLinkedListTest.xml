@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="23" failures="0" name="ua.edu.ucu.collections.ImmutableLinkedListTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="25" failures="0" name="ua.edu.ucu.collections.ImmutableLinkedListTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.2.3"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -65,7 +65,9 @@
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="idxErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="removeErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toClear" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toAddAllErr" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toAddAllIdx" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toAddAllErrZero" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="firstErr" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="addErrors" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="lastErr" time="0"/>
@@ -75,10 +77,10 @@
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toAdd" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toGet" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toSet" time="0"/>
-  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="setErrors" time="0.001"/>
-  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="getErrors" time="0.001"/>
-  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="remover" time="0.001"/>
-  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="getErrorsZero" time="0.001"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="setErrors" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="getErrors" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="remover" time="0"/>
+  <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="getErrorsZero" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="checkAttributes" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="toAddAll" time="0"/>
   <testcase classname="ua.edu.ucu.collections.ImmutableLinkedListTest" name="idxErrorsZero" time="0"/>

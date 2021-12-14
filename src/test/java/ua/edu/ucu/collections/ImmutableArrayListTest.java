@@ -101,6 +101,16 @@ public class ImmutableArrayListTest {
         assertEquals(7,arrList.addAll(adder).get(6));
     }
 
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void toAddAllErr() {
+        arrList.addAll(15, new Object[]{});
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void toAddAllErrZero() {
+        arrList.addAll(-1, new Object[]{});
+    }
+
     @Test
     public void toAdd() {
         int num = 1;

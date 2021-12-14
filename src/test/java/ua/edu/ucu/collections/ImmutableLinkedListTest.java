@@ -76,6 +76,16 @@ public class ImmutableLinkedListTest {
         linkedList.get(-1);
     }
 
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void toAddAllErr() {
+        linkedList.addAll(15, new Object[]{});
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void toAddAllErrZero() {
+        linkedList.addAll(-1, new Object[]{});
+    }
+
     @Test
     public void toSet() {
         ImmutableList arr = linkedList.set(2,2);

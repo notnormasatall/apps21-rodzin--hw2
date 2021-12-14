@@ -35,7 +35,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
-<span class="pc bpc" id="L38" title="1 of 4 branches missed.">        if (index &gt; this.length || index &lt; 0) {</span>
+<span class="fc bfc" id="L38" title="All 4 branches covered.">        if (index &gt; this.length || index &lt; 0) {</span>
 <span class="fc" id="L39">            throw new IndexOutOfBoundsException();</span>
         }
 
